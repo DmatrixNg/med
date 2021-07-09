@@ -25,7 +25,7 @@
 					<div class="box box-body">
 						<div class="content-top-agile pb-0 pt-20">
 							<h2 class="text-primary">Get started with Us</h2>
-							<p class="mb-0">Register a New Membership</p>
+							<p class="mb-0">Admin Registeration</p>
 						</div>
 						<div class="p-40">
                     <form method="POST" action="{{ route('register') }}">

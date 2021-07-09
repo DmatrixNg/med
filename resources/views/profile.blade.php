@@ -91,6 +91,7 @@
 
                                         </div>
                                     </div>
+                                    <input type="hidden" name="role" value="student">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">

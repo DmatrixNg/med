@@ -24,8 +24,7 @@
         display: block;
     }
 </style>
-	<!-- Crypto_Admin skins -->
-	{{-- <link rel="stylesheet" href="css/css/skins/_all-skins.css"> --}}
+
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
