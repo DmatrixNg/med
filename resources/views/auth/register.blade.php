@@ -30,11 +30,11 @@
 						<div class="p-40">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
-
+                        <input type="hidden" name="role" value="admin">
                         <div class="form-group">
 									<div class="input-group mb-15">
 										<span class="input-group-text bg-transparent"><i class="ti-user"></i></span>
-										<input type="text" class="form-control ps-15 bg-transparent @error('first_name') is-invalid @enderror" name="first_name" value="{{ old('first_name') }}"placeholder="Full Name">
+										<input type="text" class="form-control ps-15 bg-transparent @error('first_name') is-invalid @enderror" name="first_name" value="{{ old('first_name') }}"placeholder="First Name">
 									@error('first_name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -45,7 +45,7 @@
                                 <div class="form-group">
 									<div class="input-group mb-15">
 										<span class="input-group-text bg-transparent"><i class="ti-user"></i></span>
-										<input type="text" class="form-control ps-15 bg-transparent @error('last_name') is-invalid @enderror" name="last_name" value="{{ old('last_name') }}"placeholder="Full Name">
+										<input type="text" class="form-control ps-15 bg-transparent @error('last_name') is-invalid @enderror" name="last_name" value="{{ old('last_name') }}"placeholder="Last Name">
 									@error('last_name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

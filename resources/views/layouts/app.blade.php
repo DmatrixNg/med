@@ -11,25 +11,25 @@
      <title>Med</title>
 
 	<!-- Vendors Style-->
-	<link rel="stylesheet" href="css/vendors_css.css">
+	<link rel="stylesheet" href="{{asset('css/vendors_css.css')}}">
 
 	<!-- Style-->
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/skin_color.css">
+	<link rel="stylesheet" href="{{asset("css/style.css")}}">
+	<link rel="stylesheet" href="{{asset("css/skin_color.css")}}">
   	<!-- Bootstrap 4.0-->
-	<link rel="stylesheet" href="assets/vendor_components/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="{{asset("assets/vendor_components/bootstrap/dist/css/bootstrap.min.css")}}">
 
 	<!-- Bootstrap extend-->
-	<link rel="stylesheet" href="css/bootstrap-extend.css">
+	<link rel="stylesheet" href="{{asset("css/css/bootstrap-extend.css")}}">
 
 	<!--alerts CSS -->
-    <link href="assets/vendor_components/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
+    <link href="{{asset("assets/vendor_components/sweetalert/sweetalert.css")}}" rel="stylesheet" type="text/css">
 
 	<!-- Theme style -->
-	<link rel="stylesheet" href="css/master_style.css">
+	<link rel="stylesheet" href="{{asset("css/css/master_style.css")}}">
 
 	<!-- Crypto_Admin skins -->
-	<link rel="stylesheet" href="css/skins/_all-skins.css">
+	<link rel="stylesheet" href="{{asset("css/css/skins/_all-skins.css")}}">
     <style>
         .invalid-feedback {
             display: block;

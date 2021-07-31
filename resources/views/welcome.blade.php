@@ -45,8 +45,8 @@
 						<h1 class="box-title text-white mb-20 fw-600 fs-60">Student Medical Portal</h1>
 						<h4 class="text-white-80 fw-300 mb-30">Caleb university portal and student medical platform</h4>
 						<div class="d-flex gap-3 justify-content-start">
-							<a href="{{ url('student/registration') }}" class="btn btn-primary">Register</a>
-							<a href="{{ route('login') }}" class="btn btn-outline btn-primary text-white">Login</a>
+							<a href="{{ url('student/registration') }}" class="btn btn-primary">Student Registeration</a>
+							<a href="{{ route('login') }}" class="btn btn-outline btn-primary text-white">Admin Login</a>
 						</div>
 					</div>
 				</div>

@@ -3,15 +3,25 @@
 @section('content')
 <!---page Title --->
 <!---page Title --->
-<section class="bg-img pt-15 pb-20" data-overlay="7" style="background-image: url(../images/front-end-img/background/bg-8.jpg);">
+<section class="bg-img pt-15 pb-20" data-overlay="7" style="background-color: lawngreen;">
     <div class="container">
         <div class="row">
             <div class="col-12">
                 <div class="text-center">
-                    <h2 class="page-title text-white">Registration</h2>
+                    <h2 class="page-title text-white">Student page</h2>
                     <ol class="breadcrumb bg-transparent justify-content-center">
                         <li class="breadcrumb-item"><a href="#" class="text-white-50"><i class="mdi mdi-home-outline"></i></a></li>
-                        <li class="breadcrumb-item text-white active" aria-current="page">Registration</li>
+                        <li class="breadcrumb-item text-white active" aria-current="page">student</li>
+                    </ol>
+                    <ol class="breadcrumb bg-transparent justify-content-center">
+                        <li class="breadcrumb-item text-white active" aria-current="page">
+                            <a class="dropdown-item active" href="{{ route('logout') }}"
+                     onclick="event.preventDefault();
+                                   document.getElementById('logout-form').submit();"><i class="ti-lock text-mute me-2"></i> Logout</a>
+                                   <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </li>
                     </ol>
                 </div>
             </div>
@@ -25,7 +35,7 @@
                 <div class="box box-body">
                     <div class="box box-solid bg-dark">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Student Medical registration</h3>
+                            <h3 class="box-title">Student Record</h3>
 
                             <div class="box-tools pull-right">
                                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
@@ -35,24 +45,20 @@
 
                         <!-- /.box-header -->
                         <div class="box-body wizard-content">
-                            <form action="{{route('process')}}" method="POST" enctype="multipart/form-data" class="tab-wizard wizard-circle wizard clearfix" role="application" id="steps-uid-1">
 
 
-        
-                                <h6 id="steps-h-3" tabindex="-1" class="title">Preview</h6>
-
-                                <section class="bg-hexagons-dark body {{!empty(auth()->user()->profile->image->path)  ? "current" : "" }}" id="4" role="tabpanel" aria-labelledby="steps-h-3" style="{{empty(auth()->user()->profile->image->path) ? "display: none;" : "" }}" aria-hidden="true">
+                                <section class="bg-hexagons-dark body " id="4" role="tabpanel" aria-labelledby="steps-h-3" style="" aria-hidden="true">
                                     <div class="row">
 
                                         <div class="col-xl-4 col-lg-5">
                                           <!-- Profile Image -->
                                           <div class="box bg-yellow bg-deathstar-dark">
                                             <div class="box-body box-profile">
-                                              <img class="profile-user-img rounded img-fluid mx-auto d-block" src="{{auth()->user()->profile->image->path ?? ""}}" alt="User profile picture">
+                                              <img class="profile-user-img rounded img-fluid mx-auto d-block" src="{{$student->profile->image->path ?? ""}}" alt="User profile picture">
 
-                                              <h2 class="profile-username text-center mb-0">{{(auth()->user()->first_name ?? "")." ".(auth()->user()->last_name ?? "")}}</h2>
+                                              <h2 class="profile-username text-center mb-0">{{($student->first_name ?? "")." ".($student->last_name ?? "")}}</h2>
 
-                                              <h4 class="text-center mt-0"><i class="fa fa-envelope-o mr-10"></i>{{auth()->user()->email ?? ""}}</h4>
+                                              <h4 class="text-center mt-0"><i class="fa fa-envelope-o mr-10"></i>{{$student->email ?? ""}}</h4>
 
 
                                               <div class="row">
@@ -117,25 +123,25 @@
                                                     <div class="form-group row">
                                                       <label class="col-sm-2 col-form-label">First Name</label>
                                                       <div class="col-sm-10">
-                                                        <input class="form-control" type="text" value="{{auth()->user()->first_name ?? ""}}" readonly placeholder="Johon">
+                                                        <input class="form-control" type="text" value="{{$student->first_name ?? ""}}" readonly placeholder="Johon">
                                                       </div>
                                                     </div>
                                                     <div class="form-group row">
                                                       <label class="col-sm-2 col-form-label">Last Name</label>
                                                       <div class="col-sm-10">
-                                                        <input class="form-control" type="text" value="{{auth()->user()->last_name ?? ""}}" readonly  placeholder="Doe">
+                                                        <input class="form-control" type="text" value="{{$student->last_name ?? ""}}" readonly  placeholder="Doe">
                                                       </div>
                                                     </div>
                                                     <div class="form-group row">
                                                       <label class="col-sm-2 col-form-label">Email Adress</label>
                                                       <div class="col-sm-10">
-                                                        <input class="form-control" type="email" value="{{auth()->user()->email ?? ""}}" readonly  placeholder="johone@dummy.com">
+                                                        <input class="form-control" type="email" value="{{$student->email ?? ""}}" readonly  placeholder="johone@dummy.com">
                                                       </div>
                                                     </div>
                                                     <div class="form-group row">
                                                       <label class="col-sm-2 col-form-label">Phone Number</label>
                                                       <div class="col-sm-10">
-                                                        <input class="form-control" type="tel" value="{{auth()->user()->profile->phone ?? ""}}" readonly  placeholder="123 456 7890">
+                                                        <input class="form-control" type="tel" value="{{$student->profile->phone ?? ""}}" readonly  placeholder="123 456 7890">
                                                       </div>
                                                     </div>
 
@@ -158,13 +164,13 @@
                                                     <div class="form-group row">
                                                       <label class="col-sm-2 col-form-label">Street</label>
                                                       <div class="col-sm-10">
-                                                        <input class="form-control" type="text" value="{{auth()->user()->profile->address ?? "" }}" readonly placeholder="A-458, Lorem Ipsum, city">
+                                                        <input class="form-control" type="text" value="{{$student->profile->address ?? "" }}" readonly placeholder="A-458, Lorem Ipsum, city">
                                                       </div>
                                                     </div>
                                                     <div class="form-group row">
                                                       <label class="col-sm-2 col-form-label">Date of Birth</label>
                                                       <div class="col-sm-10">
-                                                        <input class="form-control" type="date" value="{{auth()->user()->profile->d_o_b ?? ""}}" readonly >
+                                                        <input class="form-control" type="date" value="{{$student->profile->d_o_b ?? ""}}" readonly >
                                                       </div>
                                                     </div>
                                                                                                    </div>
@@ -186,19 +192,19 @@
                                                     <div class="form-group row">
                                                       <label class="col-sm-2 col-form-label">Blood group</label>
                                                       <div class="col-sm-10">
-                                                        <input class="form-control" type="text" value="{{auth()->user()->profile->blood_group ?? ""}}" readonly >
+                                                        <input class="form-control" type="text" value="{{$student->profile->blood_group ?? ""}}" readonly >
                                                       </div>
                                                     </div>
                                                     <div class="form-group row">
                                                       <label class="col-sm-2 col-form-label">Genotype</label>
                                                       <div class="col-sm-10">
-                                                        <input class="form-control" type="text" value="{{auth()->user()->profile->genotype ?? ""}}" readonly >
+                                                        <input class="form-control" type="text" value="{{$student->profile->genotype ?? ""}}" readonly >
                                                       </div>
                                                     </div>
                                                     <div class="form-group row">
                                                       <label class="col-sm-2 col-form-label">Allergies</label>
                                                       <div class="col-sm-10">
-                                                        <input class="form-control" type="text" value="{{(auth()->user()->profile->allergy) ??"" }}" readonly>
+                                                        <input class="form-control" type="text" value="{{($student->profile->allergy) ??"" }}" readonly>
                                                       </div>
                                                     </div>
 
@@ -218,21 +224,7 @@
 
                             </div>
                             <button type="submit" id="submit" class="d-none"></button>
-                            <div class="actions clearfix">
-                                <ul role="menu" aria-label="Pagination">
-                                    <li class="disabled" aria-disabled="true">
-                                        <a href="#previous" onclick="previous()" role="menuitem">Previous</a>
-                                    </li>
 
-                                    <li aria-hidden="false" style="{{!empty(auth()->user()->profile->image->path) ? "display: none;" : "" }}" aria-disabled="false">
-                                        <a href="#next" onclick=" document.getElementById('submit').click()" role="menuitem">Next</a>
-                                    </li>
-                                    <li style="{{empty(auth()->user()->profile->image->path) ? "display: none;" : "" }};" aria-hidden="true">
-                                        <a href="#finish" onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();" role="menuitem">Submit</a>
-                                    </li>
-                                </ul>
-                            </div>
                         </form>
                     </div>
                     <!-- /.box-body -->
@@ -240,24 +232,11 @@
 
             </div>
         </div>
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-            @csrf
-        </form>
+
     </section>
 <script>
 
-    function previous(){
-        let current = +document.querySelectorAll("section.current")[0].getAttribute('id');
 
-        var previous = current - 1
-
-       document.getElementById(parseInt(current)).setAttribute('style','display:none;');
-       document.getElementById(parseInt(previous)).setAttribute('style','');
-       document.getElementById(parseInt(current)).classList.remove('current');
-       document.getElementById(parseInt(previous)).classList.add('current');
-
-
-    }
 
 </script>
 @endsection

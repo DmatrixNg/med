@@ -8,10 +8,10 @@
         <div class="row">
             <div class="col-12">
                 <div class="text-center">
-                    <h2 class="page-title text-white">Candidate List</h2>
+                    <h2 class="page-title text-white">Student List</h2>
                     <ol class="breadcrumb bg-transparent justify-content-center">
                         <li class="breadcrumb-item"><a href="#" class="text-white-50"><i class="mdi mdi-home-outline"></i></a></li>
-                        <li class="breadcrumb-item text-white active" aria-current="page">Canditates</li>
+                        <li class="breadcrumb-item text-white active" aria-current="page">student</li>
                     </ol>
                     <ol class="breadcrumb bg-transparent justify-content-center">
                         <li class="breadcrumb-item text-white active" aria-current="page">
@@ -35,7 +35,7 @@
                 <div class="box box-body">
                     <div class="box box-solid bg-dark">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Candidate list</h3>
+                            <h3 class="box-title">Student list</h3>
 
 
                         </div>
@@ -54,13 +54,13 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach (\App\Models\Users::where('role','!=','admin') as $student)
+                                                    @foreach (\App\Models\User::where('role','!=','admin')->get() as $student)
 
                                                     <tr>
                                                         <th scope="row">{{$student->id}}</th>
                                                         <td>{{$student->first_name}}</td>
                                                         <td>{{$student->last_name}}</td>
-                                                        <td class="text-center"> <a href="{{route('candidate',['id'=>$candidate->id])}}"><button class="btn-sm btn-warning">View Candidate </button></a> </td>
+                                                        <td class="text-center"> <a href="{{route('student',['id'=>$student->id])}}"><button class="btn-sm btn-warning">View Student </button></a> </td>
                                                     </tr>
                                                     @endforeach
 

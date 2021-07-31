@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,7 +23,9 @@ Route::get('student/registration', function () {
 Route::post('process', [App\Http\Controllers\ProfileController::class, 'create'])->name('process');
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('test', function () {
-    dd($this);
+Route::middleware(['auth'])->group(function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('students/{id}', function ($id) {
+        return view('search',['student' => User::whereId($id)->first()]);
+    })->name('student');
 });
